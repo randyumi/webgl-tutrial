@@ -24,24 +24,30 @@ window.onload = () => {
         new THREE.BoxGeometry(200, 200, 200),
         new THREE.MeshNormalMaterial()
     )
-    scene.add(box2)
-    scene.add(box)
+    // scene.add(box2)
+    // scene.add(box)
 
     const loader = new MTLLoader();
+    loader.setPath('./assets/')
     const objLoader = new THREE.OBJLoader();
-    loader.load('./assets/eichi_el_ei_tex.mtl', (material) => {
-        material.preload()
-        objLoader.setMaterials(material)
+
+    const light = new THREE.DirectionalLight(0xFFFFFF)
+    light.position.set(1, 1, 1)
+    scene.add(light)
+
+    loader.load('eichi_el_ei_tex.mtl', (materials) => {
+        materials.preload()
+        objLoader.setMaterials(materials)
         objLoader.setPath('./assets/')
         objLoader.load('eichi_el_ei_tex.obj', (object) => {
             object.rotation.set(0, 0, 0)
             object.position.set(0, 0, 0)
+            object.scale.set(1, 1, 1)
             const obj = new THREE.Object3D()
-            obj.add(object)
-            scene.add(obj)
+            //obj.add(object)
+            scene.add(object)
             const tick = () => {
-                obj.rotation.y += 0.01;
-                obj.rotation.x += 0.01;
+                object.rotation.y += 0.01;
                 box.rotation.y += 0.01;
                 box2.rotation.x += 0.01
                 box.position.y += 0.5;
