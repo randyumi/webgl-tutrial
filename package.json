@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
+    "copy-webpack-plugin": "^4.5.3",
     "html-webpack-plugin": "^3.2.0",
     "webpack": "^4.20.2",
     "webpack-cli": "^3.1.2",
@@ -14,6 +15,11 @@
     "start": "webpack-dev-server"
   },
   "dependencies": {
-    "three": "^0.97.0"
+    "imports-loader": "^0.8.0",
+    "three": "^0.97.0",
+    "three-collada-loader": "^0.0.1",
+    "three-fbx-loader": "^1.0.3",
+    "three-mtl-loader": "^1.0.2",
+    "three-obj-loader": "^1.1.3"
   }
 }
